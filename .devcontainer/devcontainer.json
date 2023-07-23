@@ -15,7 +15,7 @@
 			"settings": {
 				"mssql.connections": [
 					{
-						"server": "mssql",
+						"server": "db",
 						"database": "App",
 						"authenticationType": "SqlLogin",
 						"user": "sa",
