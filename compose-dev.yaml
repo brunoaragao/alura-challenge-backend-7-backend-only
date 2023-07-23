@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/dotnet:0-7.0
+    volumes:
+      - ../..:/workspaces:cached
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__App: Server=mssql;Database=App;User=sa;Password=P@ssw0rd;TrustServerCertificate=true;
+    entrypoint:
+      - sleep
+      - infinity
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/opt/mssql/data
+      - db-log:/var/opt/mssql/log
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: "P@ssw0rd"
+
+volumes:
+  db-data:
+  db-log:

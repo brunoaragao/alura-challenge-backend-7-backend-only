@@ -1,0 +1,34 @@
+{
+	"name": "DevContainer",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"fernandoescolar.vscode-solution-explorer",
+				"ms-mssql.mssql"
+			],
+			"settings": {
+				"mssql.connections": [
+					{
+						"server": "mssql",
+						"database": "App",
+						"authenticationType": "SqlLogin",
+						"user": "sa",
+						"password": "P@ssw0rd",
+						"emptyPasswordInput": false,
+						"savePassword": true,
+						"profileName": "app-db",
+						"encrypt": "Mandatory",
+						"trustServerCertificate": true
+					}
+				]
+			}
+		}
+	},
+	"postCreateCommand": "cd .devcontainer/commands && sh post-create.sh"
+}
