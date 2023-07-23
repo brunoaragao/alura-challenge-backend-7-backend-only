@@ -4,7 +4,7 @@ public static class InfrastructureExtensions
 {
     public static IServiceCollection AddDbContext(this IServiceCollection services)
     {
-        return services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Name=ConnectionStrings:App"));
+        return services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Name=ConnectionString"));
     }
 
     public static IServiceCollection AddRepositories(this IServiceCollection services)
