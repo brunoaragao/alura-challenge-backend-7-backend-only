@@ -1,15 +1,11 @@
 namespace Core.Interfaces;
 
-public interface IGenericRepository<TEntity>
-    where TEntity : class, IEntity
+public interface IGenericRepository<TEntity, TId> : IRepository<TEntity, TId>
+    where TEntity : class, IEntity<TId>
+    where TId : struct
 {
-    public TEntity[] Get();
-
-    public TEntity? Get(long id);
-
-    public void Add(TEntity entity);
-
-    public void AddOrUpdate(TEntity entity, out bool added);
-
-    public void Remove(long id);
+    TEntity? GetById(TId id);
+    IReadOnlyCollection<TEntity> GetAll();
+    void Add(TEntity entity);
+    void Delete(TEntity entity);
 }

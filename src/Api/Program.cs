@@ -1,27 +1,36 @@
-namespace Api;
+var builder = WebApplication.CreateBuilder(args);
 
-public class Program
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<ITestimonialService, TestimonialService>();
+
+builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Name=ConnectionString"));
+
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin();
+        policy.AllowAnyMethod();
+        policy.AllowAnyHeader();
+    }));
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
 {
-    public static void Main(string[] args)
-    {
-        var host = CreateHostBuilder(args).Build();
-        InitializeDatabase(host);
-        host.Run();
-    }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
-
-    public static void InitializeDatabase(IHost host)
-    {
-        using var scope = host.Services.CreateScope();
-        var services = scope.ServiceProvider;
-
-        if (services.GetRequiredService<IWebHostEnvironment>().IsDevelopment())
-        {
-            var dbContext = services.GetRequiredService<AppDbContext>();
-            dbContext.Database.Migrate();
-        }
-    }
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.MapControllers();
+
+app.Run();
+
+public sealed partial class Program { }

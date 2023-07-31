@@ -9,14 +9,13 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"fernandoescolar.vscode-solution-explorer",
 				"ms-mssql.mssql"
 			],
 			"settings": {
 				"mssql.connections": [
 					{
 						"server": "db",
-						"database": "App",
+						"database": "JornadaMilhas",
 						"authenticationType": "SqlLogin",
 						"user": "sa",
 						"password": "P@ssw0rd",

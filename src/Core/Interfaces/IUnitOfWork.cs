@@ -1,6 +1,6 @@
 namespace Core.Interfaces;
 
-public interface IUnitOfWork
+public interface IUnitOfWork : IDisposable
 {
     void Commit();
 }

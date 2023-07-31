@@ -1,12 +1,9 @@
 namespace Core.Entities;
 
-public class Depoimento : IEntity
+public sealed class Testimonial : IEntity<Guid>
 {
-    public long Id { get; set; }
-
-    // TODO: 😿 Rich Model deve resolver esse default!
-    public string Mensagem { get; set; } = default!;
-
-    // TODO: 😿 Rich Model deve resolver esse default!
-    public string NomeAutor { get; set; } = default!;
+    public Guid Id { get; set; }
+    public required string Photo { get; set; }
+    public required string Message { get; set; }
+    public required string Author { get; set; }
 }

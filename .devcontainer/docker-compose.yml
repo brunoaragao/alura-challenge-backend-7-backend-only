@@ -7,7 +7,7 @@ services:
       - ../..:/workspaces:cached
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionString: Server=db;Database=App;User=sa;Password=P@ssw0rd;TrustServerCertificate=true;
+      ConnectionString: Server=db;Database=JornadaMilhas;User=sa;Password=P@ssw0rd;TrustServerCertificate=true;
     entrypoint:
       - sleep
       - infinity

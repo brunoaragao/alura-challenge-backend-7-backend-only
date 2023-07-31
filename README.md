@@ -8,6 +8,6 @@ Há mais de uma forma de executar a aplicação, para saber mais consulte a [wik
 
 A forma mais simples de executar a aplicação é através do *Docker Dev Environments*:
 
-1. Instale o [Docker Desktop](https://www.docker.com "Baixar o Docker") e o [VS Code](https://code.visualstudio.com).
+1. Instale o [Docker](https://www.docker.com "Baixar o Docker") e o [Visual Studio Code](https://code.visualstudio.com).
 1. Inicie o ambiente de desenvolvimento clicando [aqui](https://open.docker.com/dashboard/dev-envs?url=https://github.com/brunoaragao/alura-challenge-backend-7-backend-only).
 1. Quando o VS Code for aberto, aperte `F5` para executar aplicação em modo de depuração.
